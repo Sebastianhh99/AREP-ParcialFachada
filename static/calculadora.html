@@ -16,13 +16,11 @@
         <input id="num" type="number" required/>
         <button type="button" onclick="handlesubmit()">calcular</button>
     </form>
-    <h1>Resultado</h1>
-    <h2 id="result"></h2>
     <script>
         const handlesubmit = (e) =>{
             fetch(`https://primerservicioarep.herokuapp.com/${document.getElementById('opt').value}?number=${document.getElementById('num').value}`,{mode:'cors'})
             .then(response=>response.json())
-            .then(data=>document.getElementById("result").innerHTML=data['number'])
+            .then(data=>alert(`Resultado: ${data['number']}`))
             return false;
         }
     </script>
