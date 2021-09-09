@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <select id="opt" required>
+            <option value="sin">sin</option>
+            <option value="sin">cos</option>
+            <option value="sin">tan</option>
+        </select>
+        <input id="num" type="number" required/>
+        <button type="button" onclick="handlesubmit()">calcular</button>
+    </form>
+    <h1>Resultado</h1>
+    <h2 id="result"></h2>
+    <script>
+        const handlesubmit = (e) =>{
+            fetch(`https://primerservicioarep.herokuapp.com/${document.getElementById('opt').value}?number=${document.getElementById('num').value}`,{mode:'cors'})
+            .then(response=>response.json())
+            .then(data=>document.getElementById("result").innerHTML=data['number'])
+            return false;
+        }
+    </script>
+</body>
+</html>
